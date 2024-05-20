@@ -20,6 +20,13 @@ class Product(models.Model):
         return self.title
 
 
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    date = models.DateField(auto_now_add=True)
+
+
 class Customer(models.Model):
     MEMBERSHIP_CHOICES = [("G", "Gold"), ("S", "Silver"), ("B", "Bronze")]
     first_name = models.CharField(max_length=255)

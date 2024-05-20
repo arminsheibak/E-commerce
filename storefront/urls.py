@@ -3,6 +3,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("store/", include("store.urls")),
     # django debug toolbar conf
     path("__debug__/", include("debug_toolbar.urls")),
 ]

@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # third party
+    "rest_framework",
+    "django_filters",
     "debug_toolbar",
     # local
     "accounts",
@@ -137,3 +139,7 @@ INTERNAL_IPS = [
 ]
 
 AUTH_USER_MODEL = "accounts.CustomUser"
+
+REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False,
+}
