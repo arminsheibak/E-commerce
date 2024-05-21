@@ -2,11 +2,16 @@ from django.contrib import admin
 from . import models
 
 
+class ProductImageInline(admin.TabularInline):
+    model = models.ProductImage
+
+
 @admin.register(models.Product)
 class PorductAdmin(admin.ModelAdmin):
     list_display = ["title", "unit_price", "inventory_status"]
     list_editable = ["unit_price"]
     list_per_page = 10
+    inlines = [ProductImageInline]
 
     @admin.display(ordering="inventory")
     def inventory_status(self, product: models.Product):

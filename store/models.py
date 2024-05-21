@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.core.validators import MinValueValidator
+from .validators import validate_file_size
 from django.contrib.auth import get_user_model
 from uuid import uuid4
 
@@ -22,6 +23,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="images"
+    )
+    image = models.ImageField(upload_to="store/images", validators=[validate_file_size])
 
 
 class Review(models.Model):

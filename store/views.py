@@ -26,10 +26,12 @@ from .models import (
     CartItem,
     Customer,
     Order,
+    ProductImage,
 )
 from .permissions import IsAdminOrReadOnly
 from .serializers import (
     ProductSerializer,
+    ProductImageSerializer,
     CollectionSerializer,
     ReviewSerializer,
     CartSerializer,
@@ -45,7 +47,9 @@ from .serializers import (
 
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.select_related("collection").all()
+    queryset = (
+        Product.objects.prefetch_related("collection").prefetch_related("images").all()
+    )
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ["collection_id"]
@@ -65,6 +69,17 @@ class ProductViewSet(ModelViewSet):
             )
 
         return super().destroy(request, *args, **kwargs)
+
+
+class ProductImageViewSet(ModelViewSet):
+    serializer_class = ProductImageSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        return ProductImage.objects.filter(product_id=self.kwargs["product_pk"])
+
+    def get_serializer_context(self):
+        return {"product_id": self.kwargs["product_pk"]}
 
 
 class ReviewViewSet(ModelViewSet):
