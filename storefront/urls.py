@@ -7,6 +7,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("store/", include("store.urls")),
+    path("", include("pages.urls")),
     # djoser
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),

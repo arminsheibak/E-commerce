@@ -15,7 +15,6 @@ djangorestframework-simplejwt = "*"
 social-auth-app-django = "*"
 pillow = "*"
 django-cors-headers = "*"
-redis = "*"
 
 [dev-packages]
 install = "*"
