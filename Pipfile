@@ -15,8 +15,13 @@ djangorestframework-simplejwt = "*"
 social-auth-app-django = "*"
 pillow = "*"
 django-cors-headers = "*"
+redis = "*"
 
 [dev-packages]
+install = "*"
+pytest = "*"
+pytest-django = "*"
+model-bakery = "*"
 
 [requires]
 python_version = "3.12"
