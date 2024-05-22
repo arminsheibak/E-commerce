@@ -15,6 +15,9 @@ djangorestframework-simplejwt = "*"
 social-auth-app-django = "*"
 pillow = "*"
 django-cors-headers = "*"
+whitenoise = "*"
+gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 install = "*"
