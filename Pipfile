@@ -18,6 +18,7 @@ django-cors-headers = "*"
 whitenoise = "*"
 gunicorn = "*"
 dj-database-url = "*"
+drf-spectacular = "*"
 
 [dev-packages]
 install = "*"
